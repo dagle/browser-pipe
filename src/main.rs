@@ -1,5 +1,5 @@
 use clap::Parser;
-use std::{io::{self, BufRead, Write}, thread};
+use std::{io::{self, BufRead, Write, Read}, thread};
 use std::net::{TcpListener, TcpStream};
 use std::process::Command;
 
@@ -17,9 +17,11 @@ struct Cli {
 }
 
 fn read_stdin() -> io::Result<String> {
+    let mut buf = String::new();
     let stdin = std::io::stdin();
-    let handle = stdin.lock();
-    handle.lines().collect()
+    let mut handle = stdin.lock();
+    handle.read_to_string(&mut buf)?;
+    Ok(buf)
 }
 
 fn handle_connection(mut stream: TcpStream, pipein: &String) -> io::Result<()> {
