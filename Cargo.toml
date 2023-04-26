@@ -1,9 +1,13 @@
 [package]
 name = "browser-pipe"
+description = "A tool for piping data into a browser"
+authors = ["Per Odlund <per.odlund@gmail.com>"]
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "MIT"
+repository = "https://github.com/dagle/browser-pipe"
+readme = "README.md"
+categories = ["command-line-utilities"]
 
 [dependencies]
 clap = {version = "3.2.19", features = ["derive"]}
